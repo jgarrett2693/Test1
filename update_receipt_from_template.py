@@ -61,10 +61,11 @@ def generate_overlay() -> BytesIO:
     cover_rect(534.0, 456.0, 586.0, 477.0)  # amount cell
 
     # Totals values in right box.
-    cover_rect(520.0, 130.0, 588.0, 142.5)  # Sub-total value
-    cover_rect(520.0, 76.5, 588.0, 89.0)  # Tax value
-    cover_rect(520.0, 51.0, 588.0, 63.5)  # Total Order value
-    cover_rect(520.0, 39.0, 588.0, 51.5)  # Total Payment value
+    totals_gray = (229 / 255, 229 / 255, 229 / 255)
+    cover_rect(520.0, 130.0, 588.0, 142.5)  # Sub-total value (white)
+    cover_rect(520.0, 76.5, 588.0, 89.0)  # Tax value (white)
+    cover_rect(520.0, 51.0, 588.0, 63.5, fill_rgb=totals_gray)  # Total Order value
+    cover_rect(520.0, 39.0, 588.0, 51.5, fill_rgb=totals_gray)  # Total Payment value
 
     # Payment amount value (within gray payment box).
     payment_gray = (229 / 255, 229 / 255, 229 / 255)
