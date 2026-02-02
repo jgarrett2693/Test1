@@ -55,8 +55,8 @@ def generate_overlay() -> BytesIO:
         c.rect(x0, y0, x1 - x0, y1 - y0, fill=1, stroke=0)
 
     # Date fields (Invoice Date / Order Date) - keep inside row borders.
-    cover_rect(29.0, 516.0, 86.0, 524.0)
-    cover_rect(216.5, 516.0, 266.0, 524.0)
+    cover_rect(29.0, 516.0, 86.0, 525.4)
+    cover_rect(216.5, 516.0, 266.0, 525.4)
 
     # Item row areas (description, SKU, price, amount).
     cover_rect(130.0, 440.0, 367.0, 492.0)  # description cell
@@ -81,8 +81,8 @@ def generate_overlay() -> BytesIO:
     # New dates.
     date_text = "3/02/2024"
     c.setFont("Times-Roman", 8)
-    c.drawString(31.70, 518.05, date_text)  # Invoice Date
-    c.drawString(226.10, 518.05, date_text)  # Order Date
+    c.drawString(31.70, 521.0, date_text)  # Invoice Date
+    c.drawString(226.10, 521.0, date_text)  # Order Date
 
     # New product details.
     desc = (
