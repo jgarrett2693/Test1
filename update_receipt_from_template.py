@@ -42,10 +42,16 @@ def generate_overlay() -> BytesIO:
     page_width, page_height = letter
     c = canvas.Canvas(buffer, pagesize=(page_width, page_height))
 
-    # White rectangles to cover old values (keep borders visible).
-    def cover_rect(x0: float, y0: float, x1: float, y1: float) -> None:
-        c.setFillColorRGB(1, 1, 1)
-        c.setStrokeColorRGB(1, 1, 1)
+    # Rectangles to cover old values (keep borders visible).
+    def cover_rect(
+        x0: float,
+        y0: float,
+        x1: float,
+        y1: float,
+        fill_rgb: tuple[float, float, float] = (1, 1, 1),
+    ) -> None:
+        c.setFillColorRGB(*fill_rgb)
+        c.setStrokeColorRGB(*fill_rgb)
         c.rect(x0, y0, x1 - x0, y1 - y0, fill=1, stroke=0)
 
     # Item row areas (description, SKU, price, amount).
@@ -60,8 +66,12 @@ def generate_overlay() -> BytesIO:
     cover_rect(520.0, 51.0, 588.0, 63.5)  # Total Order value
     cover_rect(520.0, 39.0, 588.0, 51.5)  # Total Payment value
 
-    # Payment amount value.
-    cover_rect(405.0, 116.0, 445.0, 129.0)
+    # Payment amount value (within gray payment box).
+    payment_gray = (229 / 255, 229 / 255, 229 / 255)
+    cover_rect(405.0, 116.0, 445.0, 129.0, fill_rgb=payment_gray)
+
+    # Reset fill color for text.
+    c.setFillColorRGB(0, 0, 0)
 
     # New product details.
     desc = (
