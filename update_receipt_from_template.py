@@ -54,6 +54,10 @@ def generate_overlay() -> BytesIO:
         c.setStrokeColorRGB(*fill_rgb)
         c.rect(x0, y0, x1 - x0, y1 - y0, fill=1, stroke=0)
 
+    # Date fields (Invoice Date / Order Date).
+    cover_rect(29.0, 517.0, 70.0, 527.0)
+    cover_rect(224.0, 517.0, 270.0, 527.0)
+
     # Item row areas (description, SKU, price, amount).
     cover_rect(130.0, 440.0, 367.0, 492.0)  # description cell
     cover_rect(369.0, 440.0, 472.5, 478.0)  # SKU cell
@@ -73,6 +77,12 @@ def generate_overlay() -> BytesIO:
 
     # Reset fill color for text.
     c.setFillColorRGB(0, 0, 0)
+
+    # New dates.
+    date_text = "3/02/2024"
+    c.setFont("Times-Roman", 8)
+    c.drawString(31.70, 518.05, date_text)  # Invoice Date
+    c.drawString(226.10, 518.05, date_text)  # Order Date
 
     # New product details.
     desc = (
