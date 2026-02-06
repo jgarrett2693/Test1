@@ -43,15 +43,15 @@ def create_receipt():
 
     pdf.set_font("Arial", "", 9)
     bill_to = (
-        "JOSHUA GARRETT\n"
-        "JOSHUA GARRETT\n"
+        "JAMES MARTIN\n"
+        "JAMES MARTIN\n"
         "123 MELROSE ST APT 354\n"
         "BROOKLYN, NY 11206\n"
         "USA"
     )
 
     ship_to = (
-        "GARRETT, JOSHUA\n"
+        "MARTIN, JAMES\n"
         "123 MELROSE ST APT 354\n"
         "BROOKLYN, NY 11206\n"
         "Bill Phone: (310)408-4111"
